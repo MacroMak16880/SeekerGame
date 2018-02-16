@@ -12,6 +12,10 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String PREFS_NAME = "Mine Seeker Preferences";
+    public static final String BOARD_WIDTH_KEY = "Board Width Key";
+    public static final String BOARD_HEIGHT_KEY = "Board Height Key";
+    public static final String MINE_NUMBER_KEY = "Mine Number Key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

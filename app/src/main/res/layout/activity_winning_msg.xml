@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sunrainy.minerseeker.WinningMsg">
+    tools:context="com.example.sunrainy.minerseeker.WinningMsg"
+    tools:layout_editor_absoluteY="73dp">
 
     <ImageView
         android:id="@+id/winningImage"
-        android:layout_width="323dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
-        android:layout_marginTop="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +24,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="16dp"
         android:text="YOU Won!"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

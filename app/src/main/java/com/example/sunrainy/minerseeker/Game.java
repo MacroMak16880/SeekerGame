@@ -23,8 +23,8 @@ import android.widget.Toast;
 public class Game extends AppCompatActivity {
 
     private int numOfmines=10;
-    private int gameHeight=4;
-    private int gameWidth=6;
+    private int gameHeight=6;
+    private int gameWidth=4;
     private int scanUsed=0;
     private int foundMines=0;
     private Button matrixOfButtons[][];
