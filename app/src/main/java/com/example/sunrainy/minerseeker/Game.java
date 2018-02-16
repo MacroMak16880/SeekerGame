@@ -1,7 +1,6 @@
 package com.example.sunrainy.minerseeker;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,39 +22,38 @@ import android.widget.Toast;
 
 public class Game extends AppCompatActivity {
 
-    private static final int NUM_COLS = 6;
-    private static int Num_ROWS=4;
-
-    private int numOfmines;
-    private int gameHeight;
-    private int gameWidth;
+    private int numOfmines=10;
+    private int gameHeight=4;
+    private int gameWidth=6;
     private int scanUsed=0;
     private int foundMines=0;
-    private Button matrixOfButtons[] [];
+    private Button matrixOfButtons[][];
     private populateGameMatrix gameMatrix;
     private int numOfStartedGames;
     private int bestscore;
-    public static final String PLAYED_GAME_KEY = "Number of Played Game";
-    public static final String BEST_SCORE_PREFIX = "Best Score Under Config ";
+    public static final String PLAYED_GAME_KEY = "Number of Played Games";
+    public static final String BEST_SCORE_PREFIX = "Find Best Score ";
     public final String SAVED_BOARD_PREFIX = "Saved Game";
-    public final String BOARD_PREFS_NAME = "Saved Game Pref";
+    public final String BOARD_PREFS_NAME = "Saved Game ";
     public final String FOUND_MINES_KEY = "Found Mines";
-    public final String SCAN_USED_KEY = "Number of Scan Used";
+    public final String SCAN_USED_KEY = "Number of Scan Time Used";
     private boolean savedGameFound = false;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        
-        populatebuttons();
+
         loadSavedSettings();
         matrixOfButtons=new Button[gameHeight][gameWidth];
         gameMatrix =new populateGameMatrix(gameHeight,gameWidth,numOfmines);
+        populatebuttons();
         findSavedGame();
         loadSavedGameStatus();
-        updateTxtview();
+
+
         if(savedGameFound){
             loadSavedGameStatus();
             gameMatrix.loadSavedGame(this,BOARD_PREFS_NAME,SAVED_BOARD_PREFIX);
@@ -65,22 +63,51 @@ public class Game extends AppCompatActivity {
             saveNumOfStartedGames();
             gameMatrix.saveBoard(this,BOARD_PREFS_NAME,SAVED_BOARD_PREFIX);
         }
+        updateTxtview();
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public  void  onWindowFocusChanged(boolean hasfocus){
+        super.onWindowFocusChanged(hasfocus);
+        if(savedGameFound){
+            ButtonSizes();
+            for(int row=0;row <gameHeight;row++){
+                for(int col=0;col<gameWidth;col++){
+                    if(gameMatrix.isMine(row,col)&&gameMatrix.isFound(row,col)){
+                        Button button=matrixOfButtons[row][col];
+                        int newHeight=button.getHeight();
+                        int newWidth=button.getWidth();
+                        Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.shikigame1);
+                        Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,newWidth,newHeight,true);
+                        Resources resources=getResources();
+                        button.setBackground(new BitmapDrawable(resources,scaledBitmap));
+                    }
+                    if(gameMatrix.isClicked(row,col)){
+                        matrixOfButtons[row][col].setText(gameMatrix.checkGrid(row,col)+"");
+                        if(gameMatrix.isMine(row,col)){
+                            matrixOfButtons[row][col].setTextColor(Color.BLACK);
+                        }
+                    }
+                }
+            }
+        }
+    }
     @SuppressLint("SetTextI18n")
     private void updateTxtview() {
         TextView foundMined=(TextView)findViewById(R.id.txtFoundMines);
         TextView Numscan =(TextView)findViewById(R.id.txtNumScan);
         TextView NumOfGamePlayed=(TextView)findViewById(R.id.txtPlayedGame);
         TextView BestScore=(TextView)findViewById(R.id.txtBestscoresofar);
-        foundMined.setText("Found {foundMines} of {numOfMines} Shiki");
-        Numscan.setText("#Scan used: {scanUsed}");
-        NumOfGamePlayed.setText("Number of games played so far:{numOfStartedGamed}");
+        foundMined.setText(getString(R.string.found_x_of_y_mines,foundMines,numOfmines));
+        Numscan.setText(getString(R.string.scans_used,scanUsed));
+        NumOfGamePlayed.setText(getString(R.string.number_of_games_played_so_far,numOfStartedGames));
         if(bestscore> gameHeight*gameWidth){
             BestScore.setText("");
         }
         else{
-            BestScore.setText("At least Scan used: {+bestScores}");
+            BestScore.setText(getString(R.string.least_scan_record,""+bestscore));
         }
 
     }
@@ -93,8 +120,8 @@ public class Game extends AppCompatActivity {
             Button button = matrixOfButtons[row][col];
             int newHeight =button.getHeight();
             int newWidth =button.getWidth();
-            Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.shiki5);
-            Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,newHeight,newWidth,true);
+            Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.shikigame1);
+            Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,newWidth,newHeight,true);
             Resources resources=getResources();
             button.setBackground(new BitmapDrawable(resources,scaledBitmap));
             foundMines++;
@@ -206,23 +233,27 @@ public class Game extends AppCompatActivity {
             table.addView(tableRow);
 
             for(int col=0;col <gameWidth;col++){
+                final int FINAL_ROW=row;
+                final int FINAL_COL=col;
                 Button button=new Button(this);
                 button.setLayoutParams(new TableRow.LayoutParams(
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f));
+                tableRow.addView(button);
 
 
                 //set count number on the button
-                button.setText(""+row);
+                matrixOfButtons[row][col]=button;
                 button.setPadding(0,0,0,0);
                 button.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                     @Override
                     public void onClick(View v) {
-                        gridButtonClicked();
+                        checkMine(FINAL_ROW,FINAL_COL);
                     }
                 });
-                tableRow.addView(button);
+
 
 
             }
@@ -230,9 +261,6 @@ public class Game extends AppCompatActivity {
 
     }
 
-    private void gridButtonClicked() {
-        Toast.makeText(this,"You clicked one button",Toast.LENGTH_LONG).show();
-    }
 
     public static Intent makeIntent(Context context) {
         return new Intent(context,Game.class);

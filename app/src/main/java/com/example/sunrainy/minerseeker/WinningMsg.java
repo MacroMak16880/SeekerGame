@@ -13,7 +13,7 @@ public class WinningMsg extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View v = LayoutInflater.from(getActivity()).inflate(R.layout.activity_winning_msg, null);
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener(){
+        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -22,3 +22,4 @@ public class WinningMsg extends AppCompatDialogFragment {
         };
         return new AlertDialog.Builder(getActivity()).setTitle("congratulations").setView(v).setPositiveButton(android.R.string.ok, listener).create();
     }
+}

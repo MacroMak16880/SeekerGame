@@ -35,7 +35,8 @@
         android:layout_marginTop="2dp"
         android:text="@string/scans_used"
         app:layout_constraintStart_toEndOf="@+id/txtFoundMines"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="17dp" />
 
     <TextView
         android:id="@+id/txtPlayedGame"
@@ -43,9 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="2dp"
-        android:text="@string/app_nameng/number_of_games_played_so_far"
+        android:text="@string/number_of_games_played_so_far"
         app:layout_constraintStart_toEndOf="@+id/txtNumScan"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="21dp" />
 
     <TextView
         android:id="@+id/txtBestscoresofar"

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Miner Seeker</string>
+    <string name="scans_used">scan_used</string>
+    <string name="found_x_of_y_mines">found_x_of_y_mines</string>
+    <string name="least_scan_record">least_scan_record</string>
+    <string name="number_of_games_played_so_far">number_of_gmaes_played_sofar</string>
 </resources>
