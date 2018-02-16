@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainMenu extends AppCompatActivity {
+    public static final String PREFS_NAME = "Mine Seeker Preferences";
+    public static final String Game_WIDTH_KEY = "Board Width Key";
+    public static final String Game_HEIGHT_KEY = "Board Height Key";
+    public static final String MINE_NUMBER_KEY = "Mine Number Key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,27 +22,28 @@ public class MainActivity extends AppCompatActivity {
         setupVideoView();
     }
 
-   private void setupVideoView() {
-      VideoView videoView=(VideoView)findViewById(R.id.Welcomevideo);
-      String videopath="android.resource://com.example.sunrainy.minerseeker/" + R.raw.movie;
-      Uri uri=Uri.parse(videopath);
-      MediaController mediaController=new MediaController(this);
-      mediaController.setAnchorView(videoView);
-      videoView.setMediaController(mediaController);
-      videoView.setVideoURI(uri);
-      videoView.start();
-   }
+    private void setupVideoView() {
+        VideoView videoView = (VideoView) findViewById(R.id.Welcomevideo);
+        String videopath = "android.resource://com.example.sunrainy.minerseeker/" + R.raw.movie;
+        Uri uri = Uri.parse(videopath);
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+        videoView.setVideoURI(uri);
+        videoView.start();
+    }
 
     private void setskipbutton() {
-        Button btn =(Button) findViewById(R.id.SkipBtn);
+        Button btn = (Button) findViewById(R.id.SkipBtn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "you clicked skip ", Toast.LENGTH_LONG).show();
-                Intent intent=MainMenu.makeIntent(MainActivity.this);
+                Intent intent = MainMenu.makeIntent(MainActivity.this);
                 startActivity(intent);
             }
         });
 
     }
 }
+
