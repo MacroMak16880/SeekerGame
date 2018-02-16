@@ -22,9 +22,9 @@ import android.widget.Toast;
 
 public class Game extends AppCompatActivity {
 
-    private int numOfmines=10;
-    private int gameHeight=6;
-    private int gameWidth=4;
+    private int numOfmines;
+    private int gameHeight;
+    private int gameWidth;
     private int scanUsed=0;
     private int foundMines=0;
     private Button matrixOfButtons[][];
@@ -39,6 +39,8 @@ public class Game extends AppCompatActivity {
     public final String SCAN_USED_KEY = "Number of Scan Time Used";
     private boolean savedGameFound = false;
 
+    public Game() {
+    }
 
 
     @Override
@@ -51,7 +53,7 @@ public class Game extends AppCompatActivity {
         gameMatrix =new populateGameMatrix(gameHeight,gameWidth,numOfmines);
         populatebuttons();
         findSavedGame();
-        loadSavedGameStatus();
+        loadSavedGameStats();
 
 
         if(savedGameFound){
@@ -202,8 +204,14 @@ public class Game extends AppCompatActivity {
                 ,false);
         return savedGameFound;
     }
-
     private void loadSavedSettings() {
+        SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
+        gameHeight = settings.getInt(MainActivity.BOARD_HEIGHT_KEY, 4);
+        gameWidth = settings.getInt(MainActivity.BOARD_WIDTH_KEY, 6);
+        numOfmines = settings.getInt(MainActivity.MINE_NUMBER_KEY, 6);
+    }
+
+    private void loadSavedGameStats() {
         SharedPreferences settings =getSharedPreferences(MainMenu.PREFS_NAME,MODE_PRIVATE);
         numOfStartedGames=settings.getInt(PLAYED_GAME_KEY,0);
         bestscore=settings.getInt(BEST_SCORE_PREFIX+numOfmines+'-'+gameHeight+'x'+gameWidth,gameHeight*gameWidth+1);

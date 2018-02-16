@@ -12,91 +12,105 @@
         android:id="@+id/optionbackbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="247dp"
         android:text="BACK"
-        tools:layout_editor_absoluteX="488dp"
-        tools:layout_editor_absoluteY="247dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="149dp"
-        android:layout_height="54dp"
-        android:text="Settings"
-        android:textColor="#ff0003"
-        android:textSize="36sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="6dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp"
         android:text="Board Size"
         android:textColor="#ff0003"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="81dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
         android:text="#Mines"
         android:textColor="#ff0003"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="81dp" />
+        app:layout_constraintStart_toStartOf="@+id/rdgrpNumOfMines"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnOptionsOkay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="54dp"
+        android:layout_marginStart="52dp"
         android:text="ok"
-        tools:layout_editor_absoluteX="346dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/optionbackbtn"
+        app:layout_constraintEnd_toStartOf="@+id/optionbackbtn"
+        app:layout_constraintStart_toEndOf="@+id/btnResetNumPlayed" />
 
     <Button
         android:id="@+id/btnResetNumPlayed"
         android:layout_width="294dp"
-        android:layout_height="42dp"
+        android:layout_height="0dp"
         android:text="reset_number_of_games_played"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="190dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnResetBestScore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgrpSizeOfBoard" />
 
     <Button
         android:id="@+id/btnResetBestScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
         android:text="reset_least_scan_record"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgrpSizeOfBoard" />
 
     <RadioGroup
         android:id="@+id/rdgrpSizeOfBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="113dp" />
+        android:layout_width="0dp"
+        android:layout_height="134dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rdgrpNumOfMines"
+        app:layout_constraintStart_toStartOf="@+id/btnResetNumPlayed"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/rdgrpNumOfMines"
-        android:layout_width="18dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="113dp" />
+        android:layout_width="106dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnResetNumPlayed"
+        app:layout_constraintEnd_toEndOf="@+id/txtOptionsBestRecord"
+        app:layout_constraintStart_toStartOf="@+id/btnResetNumPlayed"
+        app:layout_constraintTop_toTopOf="@+id/rdgrpSizeOfBoard" />
 
     <TextView
         android:id="@+id/txtOptionsNumOfGamePlayed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="202dp"
+        android:layout_marginTop="26dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="376dp"
-        tools:layout_editor_absoluteY="32dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtOptionsBestRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="376dp"
-        tools:layout_editor_absoluteY="123dp" />
+        app:layout_constraintStart_toStartOf="@+id/txtOptionsNumOfGamePlayed"
+        app:layout_constraintTop_toBottomOf="@+id/txtOptionsNumOfGamePlayed" />
 </android.support.constraint.ConstraintLayout>
