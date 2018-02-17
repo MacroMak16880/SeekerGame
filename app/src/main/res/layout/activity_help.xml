@@ -5,37 +5,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shiki3"
-    tools:context="com.example.sunrainy.minerseeker.Help">
+    tools:context="com.example.sunrainy.minerseeker.Help"
+    tools:layout_editor_absoluteY="73dp">
 
     <Button
         android:id="@+id/helpbackbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="6dp"
         android:text="BACK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginRight="2dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/resources2"
+        app:layout_constraintEnd_toEndOf="@+id/resources2" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/GameInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="16dp"
-        android:text="https://www.youtube.com/watch?v=92YMDisG1OU"
-        android:textColor="#ff0005"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/GameInfo"
+        android:textColor="#ff5893"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="29dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/GameInfo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ff0010"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/string_gameinfo1"
+        android:textColor="#FF5893"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GameInfo" />
+
+    <TextView
+        android:id="@+id/GameInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/GameInsruction"
+        android:textColor="#FF5893"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GameInfo1" />
+
+    <TextView
+        android:id="@+id/gameInstruction1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/GameInstruction1"
+        android:textColor="#ff5893"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GameInstruction" />
+
+    <TextView
+        android:id="@+id/resource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/resource"
+        android:textColor="#ff5893"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameInstruction1" />
+
+    <TextView
+        android:id="@+id/resource1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/resource1"
+        android:textColor="#ff5893"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resource" />
+
+    <TextView
+        android:id="@+id/resources2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resource2"
+        android:textColor="#ff5893"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/resource1"
+        app:layout_constraintTop_toBottomOf="@+id/resource1" />
 </android.support.constraint.ConstraintLayout>

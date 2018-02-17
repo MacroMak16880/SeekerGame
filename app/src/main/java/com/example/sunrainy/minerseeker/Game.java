@@ -96,7 +96,7 @@ public class Game extends AppCompatActivity {
             }
         }
     }
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "StringFormatInvalid"})
     private void updateTxtview() {
         TextView foundMined=(TextView)findViewById(R.id.txtFoundMines);
         TextView Numscan =(TextView)findViewById(R.id.txtNumScan);

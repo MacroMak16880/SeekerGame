@@ -30,7 +30,7 @@
     <TextView
         android:id="@+id/txtNumScan"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="2dp"
         android:text="@string/scans_used"
@@ -42,12 +42,11 @@
         android:id="@+id/txtPlayedGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="132dp"
         android:text="@string/number_of_games_played_so_far"
         app:layout_constraintStart_toEndOf="@+id/txtNumScan"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="21dp" />
+        android:layout_marginLeft="132dp" />
 
     <TextView
         android:id="@+id/txtBestscoresofar"
