@@ -26,8 +26,7 @@
     <string name="assignment_3_of_cmpt_276">Assignment 3 of CMPT 276</string>
     <string name="instructed_by_brian_fraser">Instructed by Brian Fraser</string>
     <string name="skip">Skip</string>
-    <string name="a_pile_of_coins">A pile of coins.</string>
-    <string name="help_des_html">"<![CDATA[<p>Coin Digger</p><p>Created by Parker Hao Tian</p><p>Instructed by Dr. Brian Fraser&nbsp;</p><p>Find all the coins hidden behind the buttons! Every button will tell you either it's a coin or gives you some indication for you to find the coin. The number display on the button suggests the sum of all coins hidden in the row and column it's in. Don't forget you can also click the found coins to get the number of coins in their rows and columns. Good luck!</p><p>Credits &amp; Citations:</p><p>Background picture: Author: Dmitry Kushch. Retrieved from <a href="http://previews.123rf.com/images/off/off1110/off111000360/10899839-Abstract-background-with-silver-and-gold-colors-coins-Stock-Photo.jpg">123rf </a>on 2017-02-25. The author, reserves all rights.</p><p>Coin piles used in welcome screen and congratulation dialog: Author: mystics. Retrieved from <a href="https://commons.wikimedia.org/wiki/File:Coins_(Money).svg">Wikimedia Commons</a> on 2017-02-25. The author released it into the public domain and anyone can use it.</p><p>Coin icon used in the game and as the app icon: Author: User:Antonu. Retrieved from <a href="https://commons.wikimedia.org/wiki/File:Gold_coin_icon.png">Wikimedia Commons</a> on 2017-02-25. The author released it under CC-BY-SA 3.0 licenses. Anyone can use it, however, they need to attribute the name of the author and share it under similar licences.</p><p><a href="http://www.cs.sfu.ca/CourseCentral/276/bfraser/index.html">About the Author</a></p>]]>"</string>
+    <!--<string name="a_pile_of_coins">A pile of coins.</string>-->
     <string name="not_found">Not Found</string>
     <string name="GameInfo">GameInfo</string>
     <string name="string_gameinfo1">This game idea is to find \"SHIKI\" which is the character of the anime\"Karanokyokai\",base on this anime,we made this game to celebrate SHIKI\'s birthday</string>
@@ -38,4 +37,6 @@
     <string name="resource2"><![CDATA[Background and cell picture://https://www.google.ca/search?biw=1035&bih=534&tbm=isch&sa=1&ei=MRiGWqbrHcb0jwO5mo2IBg&q=%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C1080&oq=%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C1080&gs_l=psy-ab.3...65874.66408.0.67039.0.0.0.0.0.0.0.0..0.0....0...1c.1.64.psy-ab..0.0.0....0.wmEmCqTw8WI#imgdii=PvWQEsrP71KKeM:&imgrc=3OSKZD4CKFdB1M:]]></string>
     <string name="creatername">By Rui and Timothy</string>
     <string name="insturctorname">Insructor: Dr.Brian Fraser</string>
+    <string name="mines">#Mines</string>
+    <string name="board_size">Board Size</string>
 </resources>

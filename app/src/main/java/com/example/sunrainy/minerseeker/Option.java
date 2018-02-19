@@ -1,5 +1,10 @@
 package com.example.sunrainy.minerseeker;
 
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,56 +12,40 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Option extends AppCompatActivity {
-    private int savedBoardHeight;
-    private int savedBoardWidth;
-    private int savedNumOfMines;
-    private int numOfStartedGames;
+    private int saveheight;
+    private int savewidth;
+    private int saveminesnum;
+    private int timesofgames;
     private int bestScore;
-    private String boardSizeInStr;
+    private String boardsizeString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
-        setupOPtionBackbtn();
+        OptionBack();
         loadSavedSettings();
-        setupOkayBtn();
-        setupResetBestBtn();
-        setupResetNumPlayedBtn();
-        createNumOfMineRadioBtns();
-        createSizeOfBoardRadioBtns();
+        OptionOkaybtn();
+        ResetbestBtn();
+        Resettimesbtn();
+        radioNumOfMine();
+        radioBoardsize();
         updateTextView();
     }
-    private void setupResetBestBtn() {
-        Button btn = (Button)findViewById(R.id.btnResetBestScore);
+    private void ResetbestBtn() {
+        Button btn = (Button)findViewById(R.id.ResetBestScorebtn);
         btn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 clearBestScore();
-                bestScore = savedBoardHeight*savedBoardWidth+1;
+                bestScore = saveheight*savewidth+1;
                 updateTextView();
             }
         });
     }
 
-    private void setupResetNumPlayedBtn(){
-        Button btn = (Button)findViewById(R.id.btnResetNumPlayed);
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                clearNumOfGameStarted();
-                numOfStartedGames = 0;
-                updateTextView();
-            }
-        });
-    }
 
     private void clearNumOfGameStarted() {
         SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
@@ -65,27 +54,38 @@ public class Option extends AppCompatActivity {
         editor.apply();
     }
 
+    private void Resettimesbtn(){
+        Button btn = (Button)findViewById(R.id.ResetNumPlayed);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                clearNumOfGameStarted();
+                timesofgames = 0;
+                updateTextView();
+            }
+        });
+    }
+
+    private void loadSavedSettings() {
+        SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
+        saveheight = settings.getInt(MainActivity.BOARD_HEIGHT_KEY, 4);
+        savewidth = settings.getInt(MainActivity.BOARD_WIDTH_KEY, 6);
+        saveminesnum = settings.getInt(MainActivity.MINE_NUMBER_KEY, 6);
+        timesofgames = settings.getInt(Game.PLAYED_GAME_KEY, 0);
+        bestScore = settings.getInt(Game.BEST_SCORE_PREFIX+saveminesnum+'-'+saveheight+'x'+savewidth, saveheight*savewidth+1);
+    }
 
     private void updateTextView() {
-        TextView txtNumPlayed = (TextView)findViewById(R.id.txtOptionsNumOfGamePlayed);
-        TextView txtBestScore = (TextView)findViewById(R.id.txtOptionsBestRecord);
-        txtNumPlayed.setText(getString(R.string.number_of_games_played_so_far, numOfStartedGames));
-        if(bestScore > savedBoardWidth*savedBoardHeight)
+        TextView txtTimesplayed  = (TextView)findViewById(R.id.OptionsNumOfGamePlayed);
+        TextView txtBestScore = (TextView)findViewById(R.id.OptionsBestRecord);
+        txtTimesplayed .setText(getString(R.string.number_of_games_played_so_far, timesofgames));
+        if(bestScore > savewidth*saveheight)
             txtBestScore.setText(getString(R.string.least_scan_record, getString(R.string.not_found)));
         else
             txtBestScore.setText(getString(R.string.least_scan_record, ""+bestScore));
     }
 
-    private void loadSavedSettings() {
-        SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
-        savedBoardHeight = settings.getInt(MainActivity.BOARD_HEIGHT_KEY, 4);
-        savedBoardWidth = settings.getInt(MainActivity.BOARD_WIDTH_KEY, 6);
-        savedNumOfMines = settings.getInt(MainActivity.MINE_NUMBER_KEY, 6);
-        numOfStartedGames = settings.getInt(Game.PLAYED_GAME_KEY, 0);
-        bestScore = settings.getInt(Game.BEST_SCORE_PREFIX+savedNumOfMines+'-'+savedBoardHeight+'x'+savedBoardWidth, savedBoardHeight*savedBoardWidth+1);
-    }
-
-    private void createSizeOfBoardRadioBtns() {
+    private void radioBoardsize() {
         RadioGroup grp = (RadioGroup)findViewById(R.id.rdgrpSizeOfBoard);
         String[] sizesOfBoard = getResources().getStringArray(R.array.board_size);
         for (String aSizesOfBoard : sizesOfBoard) {
@@ -93,32 +93,44 @@ public class Option extends AppCompatActivity {
             btn.setText(aSizesOfBoard);
             btn.setShadowLayer(3.0f, 1.0f, 1.0f, Color.BLACK);
             grp.addView(btn);
-            if(aSizesOfBoard.equals(savedBoardHeight+"x"+savedBoardWidth)){
+            if(aSizesOfBoard.equals(saveheight+"x"+savewidth)){
+                btn.setChecked(true);
+            }
+        }
+    }
+    private void radioNumOfMine() {
+        RadioGroup grp = (RadioGroup)findViewById(R.id.rdgrpNumOfMines);
+        int[] arrNumOfMines = getResources().getIntArray(R.array.number_of_mines);
+        for (int numOfMine : arrNumOfMines) {
+            RadioButton btn = new RadioButton(this);
+            btn.setText(numOfMine + "");
+            btn.setShadowLayer(3.0f, 1.0f, 1.0f, Color.BLACK);
+            grp.addView(btn);
+            if(numOfMine == saveminesnum) {
                 btn.setChecked(true);
             }
         }
     }
 
-
-    private void setupOkayBtn() {
+    private void OptionOkaybtn() {
         Button btn = (Button)findViewById(R.id.btnOptionsOkay);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 RadioGroup grpMine = (RadioGroup)findViewById(R.id.rdgrpNumOfMines);
                 RadioGroup grpBoardSize = (RadioGroup)findViewById(R.id.rdgrpSizeOfBoard);
-                int selectedMineId = grpMine.getCheckedRadioButtonId();
+                int mineselected = grpMine.getCheckedRadioButtonId();
                 int selectedBoardSizeId = grpBoardSize.getCheckedRadioButtonId();
-                if(selectedMineId !=-1) {
-                    RadioButton selectedMineBtn = (RadioButton) findViewById(selectedMineId);
-                    savedNumOfMines = Integer.parseInt(selectedMineBtn.getText().toString());
+                if(mineselected !=-1) {
+                    RadioButton selectedMineBtn = (RadioButton) findViewById(mineselected);
+                    saveminesnum = Integer.parseInt(selectedMineBtn.getText().toString());
                 }
                 if(selectedBoardSizeId != -1){
                     RadioButton selectedBoardSizeBtn = (RadioButton)findViewById(selectedBoardSizeId);
-                    boardSizeInStr = selectedBoardSizeBtn.getText().toString();
-                    String sizeOfBoardInArray[] = boardSizeInStr.split("x");
-                    savedBoardHeight = Integer.parseInt(sizeOfBoardInArray[0]);
-                    savedBoardWidth = Integer.parseInt(sizeOfBoardInArray[1]);
+                    boardsizeString = selectedBoardSizeBtn.getText().toString();
+                    String sizeOfBoardInArray[] = boardsizeString.split("x");
+                    saveheight = Integer.parseInt(sizeOfBoardInArray[0]);
+                    savewidth = Integer.parseInt(sizeOfBoardInArray[1]);
                 }
                 saveSettings();
                 finish();
@@ -129,9 +141,9 @@ public class Option extends AppCompatActivity {
     private void saveSettings(){
         SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt(MainActivity.BOARD_HEIGHT_KEY, savedBoardHeight);
-        editor.putInt(MainActivity.BOARD_WIDTH_KEY, savedBoardWidth);
-        editor.putInt(MainActivity.MINE_NUMBER_KEY, savedNumOfMines);
+        editor.putInt(MainActivity.BOARD_HEIGHT_KEY, saveheight);
+        editor.putInt(MainActivity.BOARD_WIDTH_KEY, savewidth);
+        editor.putInt(MainActivity.MINE_NUMBER_KEY, saveminesnum);
         editor.apply();
     }
 
@@ -139,35 +151,20 @@ public class Option extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.clear();
-        editor.putInt(MainActivity.BOARD_HEIGHT_KEY, savedBoardHeight);
-        editor.putInt(MainActivity.BOARD_WIDTH_KEY, savedBoardWidth);
-        editor.putInt(MainActivity.MINE_NUMBER_KEY, savedNumOfMines);
-        editor.putInt(Game.PLAYED_GAME_KEY, numOfStartedGames);
+        editor.putInt(MainActivity.BOARD_HEIGHT_KEY, saveheight);
+        editor.putInt(MainActivity.BOARD_WIDTH_KEY, savewidth);
+        editor.putInt(MainActivity.MINE_NUMBER_KEY, saveminesnum);
+        editor.putInt(Game.PLAYED_GAME_KEY, timesofgames);
         editor.apply();
     }
-
-    private void createNumOfMineRadioBtns() {
-        RadioGroup grp = (RadioGroup)findViewById(R.id.rdgrpNumOfMines);
-        int[] arrNumOfMines = getResources().getIntArray(R.array.number_of_mines);
-        for (int numOfMine : arrNumOfMines) {
-            RadioButton btn = new RadioButton(this);
-            btn.setText(numOfMine + "");
-            btn.setShadowLayer(3.0f, 1.0f, 1.0f, Color.BLACK);
-            grp.addView(btn);
-            if(numOfMine == savedNumOfMines) {
-                btn.setChecked(true);
-            }
-        }
-    }
-
 
 
 
     public static Intent makeIntent(Context context) {
         return new Intent(context,Option.class);
     }
-    private void setupOPtionBackbtn() {
-        Button btn=(Button) findViewById(R.id.optionbackbtn);
+    private void OptionBack() {
+        Button btn=(Button) findViewById(R.id.backbtn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
