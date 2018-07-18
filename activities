@@ -1,1 +1,9 @@
-
+Assumptions:
+ 
+ Part 1: Normal workflow
+ User sees the welcome screen. Presses button to advance to the Main Menu screen.
+ User selects button to play game.
+ User taps on game cells to initiate scans and detect mines.
+ Game displays information about number of hidden mines detected in the row and column of each scanned cell.
+ Once all mines have been found, user sees congratulations message and is returned to the Main Menu.
+ 
