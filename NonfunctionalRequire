@@ -1,1 +1,17 @@
 Non-functional requirements:
+
+1. Application source code must be maintainable for later updating.
+
+2. The application runs on Android smartphones and tablets.
+ 2.1 The application must run under at least Android OS version 7.0 (API 24, Nougat) and newer.
+ 2.2 The application must display well at a screen of size of 5 inch 1080x1920 pixels.(“Nexus 5” configruation).
+
+3. The application should appear complete and well built.
+ 3.1 The application must have an appropriate icon.
+ 3.2 All text must be clearly readable over the background.
+ 3.3 App may save game state if app is closed while playing.
+ 
+4. The game should be difficult to learn for a new user.
+ 
+5. Must be responsive to the user.
+ 5.1 Each user interaction must start to generate its response within 0.5s when run on a real device. 
