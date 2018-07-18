@@ -1,6 +1,21 @@
 Process of the gameplay:
 
-User initially sees the game board with all cells hidden.User selects a cell. If it has a mine, then the mine is revealed.When the user taps a cell without a hidden mine (i.e., taps a cell with a known mine, or an unrevealed cell which has no mine), it triggers a scan of that cell's row and column. 
-The cell then displays the number of hidden mines found in its row and column.Using the information from the scans, the user can make informed choices about which cells to investigate. When the user taps a mine, it is revealed. Hence the “hidden mine” counts all decreases for the cells in the mine's 
-row and column because that mine is no longer hidden.The user may trigger a scan in a cell with a mine. This is done by tapping the cell once it contains a mine. This scan is identical to scans in other cells.Once the user has found all the mines, they win the game. The challenge is winning with the fewest scans. 
-Note that revealing a mine does not count as a scan; however, scanning (by tapping a mine a second time) does trigger a scan and counts as a scan. Once the user has found all the mines, all scans should show 0 because there are no hidden mines in the game.
+1.User initially sees the game board with all cells hidden.
+
+2.User selects a cell. If it has a mine, then the mine is revealed.
+
+3.When the user taps a cell without a hidden mine (i.e., taps a cell with a known mine, or an unrevealed cell which has no mine), 
+it triggers a scan of that cell's row and column. 
+
+4.The cell then displays the number of hidden mines found in its row and column.
+
+5.Using the information from the scans, the user can make informed choices about which cells to investigate.
+When the user taps a mine, it is revealed. Hence the “hidden mine” counts all decreases for the cells in the mine's 
+row and column because that mine is no longer hidden.
+
+6.The user may trigger a scan in a cell with a mine. This is done by tapping the cell once it contains a mine. 
+This scan is identical to scans in other cells.
+
+7.Once the user has found all the mines, they win the game. The challenge is winning with the fewest scans. 
+Note that revealing a mine does not count as a scan; however, scanning (by tapping a mine a second time) does trigger a scan and counts as a scan. 
+Once the user has found all the mines, all scans should show 0 because there are no hidden mines in the game.
