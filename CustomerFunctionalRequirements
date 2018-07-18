@@ -1,15 +1,15 @@
 Functional Requirements:
 
-1.The application first screen must be a nice look welcome screen, and program must start up showing the welcome screen.
+1.The application's first screen must be a nice looking welcome screen, and program must start up showing the welcome screen.
 
-2.The Main Menu must allow the user to navigate to the game, options and help screens.
+2.The Main Menu must allow the user to navigate to the game, options, and help screens.
 
 3.The Game screen must allow the user to play the Mine Seeker game.
  3.1 Display text stating how many mines total there are on the game board (hidden or revealed)
  3.2 Display text stating how many mines the player has revealed.
  3.3 Display text stating how many scans it has taken the user so far this game.
  
-3. When the player wins, congratulate the player and return to the Main Menu.
+4. When the player wins, congratulate the player and return to the Main Menu.
  
 5.The Options screen must allow the user select board size and numbers of mines.
  5.1 User can select the board size, from options including at least:
@@ -22,4 +22,4 @@ Functional Requirements:
 - 15 mines
 - 20 mines
  5.3 The game size, and number of mines are saved between application runs.
- 5.4 May allow user to reset number of times game has been played, and best score for each game configuration.
+ 5.4 May allow user to reset number of times game has been played, and best scores for each game configuration.
