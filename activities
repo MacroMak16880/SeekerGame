@@ -15,12 +15,3 @@ Part 2: Change game size
  
  Part 3: Concurrent states
  User may navigate away from application and return to the application without losing its state so long as the application does not close. If the application is closed, the game state may be lost.
-
-Part 2: Change game size
- Before starting the game from the Main Menu, user selects to go to Options screen.
- User changes game board size and number of mines in game.
- Use presses the Android back button to return to Main Menu.
- Resumes normal workflow to begin playing game.
- 
- Part 3: Concurrent states
- User may navigate away from application and return to the application without losing its state so long as the application does not close. If the application is closed, the game state may be lost.
