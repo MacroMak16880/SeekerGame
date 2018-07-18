@@ -1,3 +1,3 @@
 # SeekerGame
 
-hi
+hi and bye
