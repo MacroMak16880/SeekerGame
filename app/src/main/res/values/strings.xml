@@ -22,9 +22,6 @@
     <string name="reset_least_scan_record">Reset least scan record</string>
     <string name="you_win">You Win!</string>
     <string name="congratulations">Congratulations!</string>
-    <string name="by_parker_hao_tian">By Parker Hao Tian</string>
-    <string name="assignment_3_of_cmpt_276">Assignment 3 of CMPT 276</string>
-    <string name="instructed_by_brian_fraser">Instructed by Brian Fraser</string>
     <string name="skip">Skip</string>
     <!--<string name="a_pile_of_coins">A pile of coins.</string>-->
     <string name="not_found">Not Found</string>
